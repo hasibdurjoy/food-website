@@ -1,0 +1,29 @@
+.footer-link a {
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+    font-weight: bold;
+    line-height: 35px;
+  }
+  .footer-link a:hover {
+    color: rgb(104, 0, 0);
+    transition: 0.06s;
+  }
+  
+  .gradient {
+    background: rgba(245, 196, 37, 0.788);
+    background: linear-gradient(
+      0deg,
+      rgb(167, 132, 18) 0%,
+      rgb(247, 195, 26) 100%
+    );
+  }
+  .copyright {
+    background-color: rgb(247, 195, 26);
+  }
+  
+  .dropdown-menu.show {
+    left: -126px;
+    padding: 11px;
+  }
+  
