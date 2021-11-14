@@ -6,7 +6,7 @@ const useCart = () => {
   const { uid } = user;
   const [selectedCourse, setSelectedCourse] = useState([]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     fetch(`http://localhost:5000/cart/${uid}`)
       .then((res) => res.json())
       .then((data) => {
@@ -14,7 +14,7 @@ const useCart = () => {
           setSelectedCourse(data);
         }
       });
-  }, [uid]);
+  }, [uid]); */
 
   function addToCart(course) {
     const isHave = selectedCourse.find(

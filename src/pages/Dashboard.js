@@ -1,25 +1,43 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import useFirebase from "../hooks/useFirebase.js";
 import Cart from "./Carts.js";
-import Profile from "./Profile.js";
 
 const Dashboard = () => {
-  const [current, setCurrent] = useState("Profile");
-  function profileHandler(e) {
-    setCurrent(e.target.value);
-  }
-  function cartHandler(e) {
-    setCurrent(e.target.value);
-  }
+  const { user } = useFirebase();
+  console.log(user);
+  const userId = user.uid;
+  console.log(userId);
+  const [myOrders, setMyOrders] = useState([]);
 
+  useEffect(() => {
+    fetch(`http://localhost:5000/myOrders/?uid=${user.uid}`)
+      .then(res => res.json())
+      .then(data => setMyOrders(data))
+  }, [user]);
+  console.log("orders", myOrders);
+
+  const deleteOrder = (id) => {
+    console.log(id);
+    const proceed = window.confirm('Are you sure, you want to cancel?');
+    if (proceed) {
+      const url = `http://localhost:5000/orders/${id}`;
+      fetch(url, {
+        method: 'DELETE'
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.deletedCount > 0) {
+            alert('deleted successfully');
+            const remainingBookings = myOrders.filter(booking => booking._id !== id);
+            setMyOrders(remainingBookings);
+          }
+        });
+    }
+  }
   return (
     <div>
-      <div className="d-flex my-2 justify-content-center">
-        <input onClick={profileHandler} type="button" value="Profile" />
-        <input onClick={cartHandler} type="button" value="Cart" />
-      </div>
-
-      {(current === "Profile" && <Profile></Profile>) ||
-        (current === "Cart" && <Cart></Cart>)}
+      <h2 className="text-center text-danger">Your Orders</h2>
+      <Cart myOrders={myOrders} deleteOrder={deleteOrder}></Cart>
     </div>
   );
 };

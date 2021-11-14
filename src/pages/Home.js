@@ -7,6 +7,8 @@ import Course from "../components/course/Course.js";
 import useAuth from "../hooks/useAuth.js";
 import Bg from "./../assets/images/bg.png";
 import bgImage from "./../assets/images/sectionBg.png";
+import About from "./About.js";
+import Contact from "./Contact.js";
 import Courses from "./Courses.js";
 
 const Home = () => {
@@ -68,30 +70,9 @@ const Home = () => {
         <div>
           <Courses></Courses>
         </div>
-        <div className="text-center text-white">
-          <Slide left>
-            <h1>
-              More Foods Items Deliver with{" "}
-              <span className="text-danger">One Hour</span>
-            </h1>
-          </Slide>
 
-          <Slide right>
-            <p className="mb-0">
-              Here you can find our all latest Foods Items. Choose your items..
-            </p>
-          </Slide>
-        </div>
-
-        <Container>
-          <div className="my-3 d-flex flex-wrap justify-content-between">
-            <Row>
-              {courses.slice(0, 9)?.map((course) => (
-                <Course id={course.id} course={course} />
-              ))}
-            </Row>
-          </div>
-        </Container>
+        <About></About>
+        <Contact></Contact>
       </div>
     </div>
   );

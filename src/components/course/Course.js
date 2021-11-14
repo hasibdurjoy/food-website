@@ -54,24 +54,12 @@ const Course = ({ course }) => {
             </Card.Body>
             <Card.Body className="d-flex">
               <NavLink
-                to={`/courses/${_id}`}
+                to={`/services/${_id}`}
                 className="btn btn-danger w-100 me-1"
               >
-                View Food
+                Order Food
               </NavLink>
 
-              <button
-                onClick={() => {
-                  if (uid) {
-                    addToCart(course);
-                  } else {
-                    history.push("/login");
-                  }
-                }}
-                className="btn btn-danger  w-100"
-              >
-                Buy Food
-              </button>
             </Card.Body>
           </Card>
         </div>

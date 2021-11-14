@@ -30,18 +30,9 @@ const Header = () => {
               </Nav.Link>
 
               <Nav.Link as={NavLink} to="/services">
-                Services
-              </Nav.Link>
-              <Nav.Link as={HashLink} to="/home#feature">
-                More Services
-              </Nav.Link>
-              <Nav.Link as={NavLink} to="/about">
-                About
+                Foods
               </Nav.Link>
 
-              <Nav.Link as={NavLink} to="/contact">
-                Contact
-              </Nav.Link>
 
               {!displayName ? (
                 <>
@@ -56,7 +47,15 @@ const Header = () => {
               ) : (
                 <>
                   <Nav.Link as={HashLink} to="/dashboard">
-                    Dashboard
+                    My Orders
+                  </Nav.Link>
+
+                  <Nav.Link as={HashLink} to="/manageBookings">
+                    Manage Orders
+                  </Nav.Link>
+
+                  <Nav.Link as={HashLink} to="/addNewFood">
+                    Add New Food
                   </Nav.Link>
 
                   <NavDropdown
